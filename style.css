@@ -4,14 +4,17 @@ padding:0;
 font-family:'Poppins',sans-serif;
 box-sizing:border-box;
 }
-body{
+.body{
     background:#000000;
-    color:#fff;
+    color:#1a1919;
 
+}
+.white-text{
+    color: #f6f5f5;
 }
 #header{
     width:100%;
-    height:100vh;
+    height:100ph;
    
     background-size:cover;
     background-position:center;
@@ -33,7 +36,7 @@ nav ul li{
 }
 
 nav ul li a{
-   color:#fff;
+   color:#ffffff;
    text-decoration:none;
    font-size:18px;
    position:relative;
@@ -59,9 +62,11 @@ nav ul li a:hover {
     0 0 20px #4968f2,
     0 0 40px #4968f2; 
 }
+
 .header-text{
     margin-top:15%;
     font-size:10px;
+    color: #fff;
 }
 .header-text h1{
 font-size:45px;
@@ -119,4 +124,178 @@ flex-basis:35%;
     color: #35db53; /* Yaşıl parıltı */
     text-shadow: 0 0 10px #35db53, 0 0 20px #35db53, 0 0 30px #35db53;
 }
+html {
+    scroll-behavior: smooth;
+}
 
+
+.mytravelsbody{
+    background-color: azure;
+    background: #fff;
+}
+#welcome{
+    color:#0c3872;
+    font-size: large;
+}
+
+.blog-post {
+    background: rgb(133, 177, 154);
+    padding: 40px;
+    
+    box-shadow: 0 5px 5px rgba(100, 168, 197, 0.1);
+    margin-bottom: 20px;
+    justify-content: space-between; 
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+.blog-post .text {
+    flex: 1;
+}
+
+.blog-post img {
+    width: 200px; 
+    border-radius:4px;
+}
+.blog-post .item {
+   /* Şəkil və mətn yan-yana */
+    align-items: center;
+    gap: 20px;
+}
+
+.blog-post img {
+    width: 150px; /* Hər şəkil kiçik */
+    border-radius: 10px;
+}
+
+.blog-post .item {
+    /* Şəkil və mətn yan-yana */
+    align-items:center;
+    gap: 20px;
+}
+
+.blog-post img {
+    width: 150px; 
+    border-radius: 10px;
+}
+
+.blog-post .text {
+    flex: 1;
+}
+.blog-post .images{
+    display: flex;
+}
+#yazi{
+    font-style: oblique;
+    font-family:Apple Chancery;
+    color:#000000
+}
+.blog-post2{
+    background-color: #ababab;
+    padding: 40px;
+    
+    box-shadow: 0 5px 5px rgba(100, 168, 197, 0.1);
+    margin-bottom: 20px;
+    justify-content: space-between; 
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+.london{
+    background: rgb(198, 167, 74);
+    padding: 40px;
+    box-shadow: 0 5px 5px rgba(100, 168, 197, 0.1);
+    margin-bottom: 20px;
+    justify-content: space-between; 
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 50px;
+    border-radius:30px;
+}
+#londontitle{
+    font-family: Luicida Sans;
+    color: #8e3109;
+
+}
+#yazilar{
+    font-family:Apple Chancery;
+    color:#000000;
+    font-style:oblique;
+   
+}
+#yazilars{
+    font-family:Apple Chancery;
+    color:#f6f5f5;
+    font-style:oblique;
+   
+}
+
+
+
+.content {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+  .trip-photo {
+    width: 200px;
+    margin-right: 20px;
+  }
+  
+  .trip-text {
+    max-width: 400px;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  .cambridge{
+  background: rgba(190, 115, 15, 0.968);
+    padding: 40px;
+    box-shadow: 0 5px 5px rgba(100, 168, 197, 0.1);
+    margin-bottom: 20px;
+    justify-content: space-between; 
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 50px;
+    border-radius: 30px;
+  }
+  #cmbtitle{
+    font-family: Luicida Sans;
+    color: #0c3872;
+  }
+  .cvbody{
+    background-color: #36a6c2;
+  }
+  .h1-cv{
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color:#1124d3 ;
+  }
+  #cvbutton{
+    background-color: #c8c0da;
+    color:#2e37df;
+    padding:5px 10px;
+    display:block;
+    margin-left: auto;
+    margin-right:auto;
+    border-radius:20px;
+    
+  }
+  .img-fluid {
+      border-radius: 10px;
+    }
+    .image-stack img {
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+    .body-mycity{
+        background-color: #000000;
+    }
+ 
+
+.carousel-item img{
+    width:100%;
+    height: 400px;
+  object-fit: cover;
+
+}
