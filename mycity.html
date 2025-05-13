@@ -95,36 +95,53 @@ But Icherisheher is not just about monuments. It's about atmosphere. Local artis
 
     </div>
   </div>
+<div class="container my-5">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <img
+          src="images/map.png"
+          alt="Sample Image"
+          class="img-fluid"
+        />
+      </div>
+      <div class="col-md-6">
+        <h2 id="yazilars">Population</h2>
+        <p id="yazilars">
+       Azerbaijan has a population of about 10.3 million and majority lives in Baku. Around 91%—are ethnic Azerbaijanis, with minorities such as Lezgins, Russians, and Talysh also present.
 
-  <div class="container my-5">
-    <!-- Text Section -->
-    <div class="text-center mb-4">
-      
-      <p id="yazilars">Swipe through the images below to see more.</p>
+Over 2 million people live in Baku. 
+
+Azerbaijani is the official language, and most people identify as Muslim. 
+ </p>
+       
+     
+      </div>
     </div>
 
-    <!-- Slider Section -->
-     <div class="mx-auto">
+
+  <div class="container my-5">
+  <!-- Text Section -->
+  <div class="text-center mb-4">
+    <p id="yazilars">Click the images to read about the pictures.</p>
+  </div>
+
+  <!-- Slider Section -->
+  <div class="mx-auto">
     <div id="photoCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-               <a  href="eliyevmerkezi.html" target="_blank">
-          <img src="images/eliyevmerkezi.jpg" class="d-block w-100" alt="Photo 1" />
-        </div>
-       
-        <div class="carousel-item">
-          <img src="images/gobustan.jpg" />
-        </div>
-         <div class="carousel-item">
-          <img src="images/meydanii.jpg" />
+          <img id="go-eliyevmerkezi" src="images/eliyevmerkezi.jpg" id="eliyevmerkezi" class="d-block w-100" alt="Heydar Aliyev Center" />
         </div>
         <div class="carousel-item">
-          <img src="images/targovu.jpg">
+          <img id="go-gobustan" src="images/gobustan.jpeg" class="d-block w-100" alt="Gobustan" />
         </div>
-         <div class="carousel-item">
-          <img src="images/flametowers.jpg" />
+        <div class="carousel-item">
+          <img id="go-meydan" src="images/meydanii.jpg" class="d-block w-100" alt="Bayrag Meydani" />
         </div>
+        <div class="carousel-item">
+          <img id="go-bulvar" src="images/bulvar.jpg" class="d-block w-100" alt="Boulevard" />
         </div>
+      </div>
 
       <!-- Carousel Controls -->
       <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
@@ -138,16 +155,58 @@ But Icherisheher is not just about monuments. It's about atmosphere. Local artis
 
       <!-- Carousel Indicators -->
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="0" class="active"></button>
-        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="2"></button>
-        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="3"></button>
-        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="4"></button>
+        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
       </div>
     </div>
   </div>
+</div>
 
-<!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <section id="eliyevmerkezi"class="text-box">
+    <h4 class="mb-3">Heydar Aliyev Merkezi</h4>
+    <p>Completed in 2012, the Heydar Aliyev Center spans approximately 57,500 square meters and stands as a symbol of modern Azerbaijan. Its design breaks from the rigid Soviet-era architecture prevalent in Baku, instead embracing a flowing, organic form that reflects the nation's aspirations and cultural identity. </p>
+     </p>
+  </section>
+
+  <section id="gobustan"class="text-box">
+    <h4 class="mb-3">Gobustan</h4>
+    <p>Completed in 2012, the Heydar Aliyev Center spans approximately 57,500 square meters and stands as a symbol of modern Azerbaijan. Its design breaks from the rigid Soviet-era architecture prevalent in Baku, instead embracing a flowing, organic form that reflects the nation's aspirations and cultural identity. </p>
+     </p>
+  </section>
+
+  <section id="meydan"class="text-box">
+    <h4 class="mb-3">Flag Square</h4>
+    <p>From 2010 to 2017, the square featured a 162-meter flagpole, holding a 35 m × 70 m (2,450 m²) flag weighing 350 kg. On 29 May 2010, Guinness World Records certified it as the world’s tallest flagpole.
+      </p>
+  </section>
+
+  <section id="bulvar"class="text-box">
+    <h4 class="mb-3">Boulevard</h4>
+    <p>Denizkenari Milli Park also known as National Park, is a promenade established in 1909 which runs parallel to Baku's seafront. Its history goes back more than 100 years, to a time when Baku oil barons built their mansions along the Caspian shore and when the seafront was artificially built up inch by inch.
+  </section>
+
+</body>
+
+    
+   
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+ <script>
+  document.getElementById("go-eliyevmerkezi").addEventListener("click", function () {
+    document.getElementById("eliyevmerkezi").scrollIntoView({ behavior: "smooth" });
+  });
+  document.getElementById("go-gobustan").addEventListener("click", function () {
+    document.getElementById("gobustan").scrollIntoView({ behavior: "smooth" });
+  });
+  document.getElementById("go-meydan").addEventListener("click", function () {
+    document.getElementById("meydan").scrollIntoView({ behavior: "smooth" });
+  });
+  document.getElementById("go-bulvar").addEventListener("click", function () {
+    document.getElementById("bulvar").scrollIntoView({ behavior: "smooth" });
+  });
+</script>
 </body>
 </html>

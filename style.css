@@ -64,17 +64,26 @@ nav ul li a:hover {
 }
 
 .header-text{
-    margin-top:15%;
+    margin-top:10%;
     font-size:10px;
     color: #fff;
+   margin-left: 100px; /* Adjust this value for the desired shift */
+
+   
+
 }
 .header-text h1{
 font-size:45px;
-margin-top:20px;
+
+  font-family: 'Merriweather', serif;
+
+
 }
 .header-text h1 span{
     color:blue;
+     font-family: 'Merriweather', serif;
 }
+
 /*-----about----->*/
 #about{
     padding: 80px 0;
@@ -99,11 +108,17 @@ flex-basis:35%;
     font-size:55px;
     font-weight:500;
     color: #fff;
+    font-family: 'Georgia', serif;
+}
+.sub{
+     font-family: 'Georgia', serif;
 }
 .tab-titles{
     display:flex;
     margin:20px 0 40px;
+    
 }
+
 .tab-links{
     margin-right:50px;
     font-size:18px;
@@ -230,7 +245,13 @@ html {
    
 }
 
-
+.max-2{
+    color:rgb(0, 0, 0);
+}
+.h1-cv{
+    color: #080808;
+    font-weight: 700;
+}
 
 .content {
     display: flex;
@@ -241,7 +262,11 @@ html {
     width: 200px;
     margin-right: 20px;
   }
-  
+  /* Hide only the section navigation on the CV page */
+.cvbody nav.bg {
+    display: none;
+}
+
   .trip-text {
     max-width: 400px;
     font-size: 18px;
@@ -263,12 +288,12 @@ html {
     color: #0c3872;
   }
   .cvbody{
-    background-color: #36a6c2;
+    background-color: #a9bec4;
   }
   .h1-cv{
     text-align: center;
     text-decoration: underline;
-    text-decoration-color:#1124d3 ;
+    text-decoration-color:#020d32 ;
   }
   #cvbutton{
     background-color: #c8c0da;
@@ -299,3 +324,17 @@ html {
   object-fit: cover;
 
 }
+ .text-box {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: #9ca5ad;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+
+
+
