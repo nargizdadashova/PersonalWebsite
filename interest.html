@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interests</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div id="header">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light ">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">My Website</a>
+        <!-- Toggler/collapsing button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible menu -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link"  href="mycity.html">My City</a></li>
+             <li class="nav-item"><a class="nav-link" href="heritage.html">Heritage</a></li>
+            <li class="nav-item"><a class="nav-link"href="CV.html">CV</a></li>
+            <li class="nav-item"><a class="nav-link" href="interest.html">Interest</a></li>
+           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+         
+        </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+    <div class="container py-4">
+        <h1 class="text-center mb-4">My Favourite Movies of All Time</h1>
+        <div id="movies" class="row gy-4"></div>
+    </div>
+
+    <script>
+        const apiKey = '9ebbf432f1e2c2c0c07e49d4c0c000dc';  
+        const movies = [
+            'The Lord of The Rings-Fellowship of the Ring','Two Towers','Return of the King',
+            'The Lion King','Unexpected journey','Desolation of smaug','Battle of five',
+            'Before sunrise','Intouchables','Rush hour','Dead poets society',
+            'Perks of being a wallflower','The pursuit of happyness','12 angry men',
+            'Forest Gump','The Green Mile','La la land','The Truman show','Way of Water',
+            'Black swan','Se7en','Mamma Mia','Toy story','Mufasa','two is a family',
+            'the art of racing in the rain','the prestige','kill bill','kill bill vol2','kal ho naa ho'
+        ];
+
+        movies.forEach(movie => {
+            const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(movie)}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const film = data.results[0];
+                    if (film && film.poster_path) {
+                        const movieCard = `
+                            <div class="col-12">
+                                <div class="card flex-md-row shadow-sm h-100">
+                                    <img class="card-img-left img-fluid rounded-start" style="max-width: 200px;" src="https://image.tmdb.org/t/p/w500${film.poster_path}" alt="${film.title}">
+                                    <div class="card-body d-flex flex-column">
+                                        <h4 class="card-title">${film.title}</h4>
+                                        <p class="card-text"><strong>Release:</strong> ${film.release_date}</p>
+                                        <p class="card-text">${film.overview ? film.overview.substring(0, 1000) + '...' : 'No overview available.'}</p>
+                                        <p class="card-text mt-auto"><strong>Rating:</strong> ${film.vote_average}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        document.getElementById('movies').innerHTML += movieCard;
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+
+    <!-- Bootstrap JS (optional but recommended for components) -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<footer class="bg-dark text-light py-4">
+  <div class="container ">
+    <!-- Sosial Media Linkləri -->
+    <div class="mb-3 d-flex gap-4">
+      <a href="https://instagram.com/itsnargiss7" class="text-light me-3" target="_blank">
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+      <a href="https://open.spotify.com/user/6nbstpa3c7nialawltifdekp7?si=5F5lmh9GQA-QDq-jD9702A" class="text-light me-3" target="_blank">
+        <i class="fab fa-spotify fa-lg"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/nargiz-dadashova-97476b351" class="text-light me-3" target="_blank">
+        <i class="fab fa-linkedin fa-lg"></i>
+      </a>
+      <a href="https://letterboxd.com/agustdaffodils" class="text-light me-3" target="_blank">
+        <i class="fas fa-film fa-lg"></i>
+      </a>
+    </div>
+
+    
+    <p class="mb-1">📧 <a href="mailto:N.dadashova2007@gmail.com" class="text-light">E-mail</a></p>
+    <p>📞 <a href="tel:+994555094386" class="text-light">+994 55 509 43 86</a></p>
+<p>📞 <a href="tel:+905397611744" class="text-light">+90 5397611744</a></p>
+
+    
+    <small class="text-light">&copy; 2025 Nargiz Dadashova</small>
+  </div>
+</footer>
+</body>
+</body>
+</html>
+
+    
