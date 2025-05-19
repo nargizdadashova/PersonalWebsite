@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact me</title>
+      <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="body">
+    <div id="header">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="container-fluid">
+      
+      
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link"  href="mycity.html">My City</a></li>
+             <li class="nav-item"><a class="nav-link" href="heritage.html">Heritage</a></li>
+            <li class="nav-item"><a class="nav-link"href="CV.html">CV</a></li>
+            <li class="nav-item"><a class="nav-link" href="interest.html">Interest</a></li>
+           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          
+        </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+     <div id="app" class="form-container">
+    <h1>Contact form</h1>
+
+    <form @submit.prevent="gonder">
+      <label>Name:</label>
+      <input type="text" v-model="form.ad">
+
+      <label>Surname:</label>
+      <input type="text" v-model="form.soyad">
+
+      <label>E-mail:</label>
+      <input type="text" v-model="form.email">
+
+      <label>Phone:</label>
+      <input type="text" v-model="form.telefon">
+
+      <label>Topic:</label>
+      <select v-model="form.topic">
+        <option disabled value="">Choose:</option>
+        <option>Information</option>
+        <option>Support</option>
+        <option>Other</option>
+      </select>
+
+      <label>Gender:</label>
+      <div class="radio-group">
+        <label><input type="radio" value="Male" v-model="form.gender"> Male</label>
+        <label><input type="radio" value="Female" v-model="form.gender"> Female</label>
+      </div>
+
+      <div class="checkbox-group">
+        <label><input type="checkbox" v-model="form.kvkk">I accept the terms of the Personal Data Protection Law.</label>
+      </div>
+
+      <label>Your message:</label>
+      <textarea rows="5" v-model="form.mesaj"></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <div class="error" v-for="error in errors" :key="error">{{ error }}</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        form: {
+          ad: '',
+          soyad: '',
+          email: '',
+          telefon: '',
+          topic: '',
+          gender: '',
+          kvkk: false,
+          mesaj: ''
+        },
+        errors: []
+      },
+      methods: {
+        gonder() {
+          this.errors = [];
+
+        
+          const jsErrors = this.jsKontrol();
+          // Vue'ye özgü doğrulamalar
+          const vueErrors = this.vueKontrol();
+
+          // Tüm hataları birleştir
+          this.errors = [...jsErrors, ...vueErrors];
+
+          if (this.errors.length === 0) {
+            alert("Form sent succesfully!");
+            
+          }
+        },
+        jsKontrol() {
+          const errors = [];
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          const phonePattern = /^[0-9]+$/;
+
+          if (this.form.ad === '') errors.push("Name cannot be empty.");
+          if (this.form.soyad === '') errors.push("Surname canot be empty.");
+          if (!emailPattern.test(this.form.email)) errors.push("Invalid e-mail format.");
+          if (!phonePattern.test(this.form.telefon)) errors.push("Phone number can only consist digits.");
+          if (this.form.topic === '') errors.push("Topic must be chosen.");
+          if (this.form.gender === '') errors.push("Gender must be chosen.");
+          if (!this.form.kvkk) errors.push("PDPL must be accepted.");
+          if (this.form.mesaj === '') errors.push("Message area cannot be empty.");
+
+          return errors;
+        },
+        vueKontrol() {
+          const errors = [];
+          if (!this.form.email.includes("@"))
+            errors.push("E-mail must contain '@'.");
+       
+
+          return errors;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
