@@ -12,38 +12,53 @@
 
   <div class="login-form">
     <h2 class="text-center mb-4">Login</h2>
-    <form action="login/control.php" method="POST" onsubmit="return validateForm()">
+    <form action="control.php" method="POST" onsubmit="return validateForm()">
       <div class="mb-3">
         <label for="email" class="form-label">Username (Email)</label>
-        <input type="text" class="form-control" id="email" name="email" placeholder="b1812100001@sakarya.edu.tr">
+        <input type="text" class="form-control" id="email" name="email" placeholder="**********@sakarya.edu.tr">
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="b1812100001">
+        <input type="password" class="form-control" id="password" name="password" placeholder="**********">
       </div>
       <button type="submit" class="btn btn-primary w-100">Login</button>
     </form>
   </div>
 
-  <script>
-    function validateForm() {
-      var email = document.getElementById("email").value.trim();
-      var password = document.getElementById("password").value.trim();
-      var emailPattern = /^[a-zA-Z0-9._%+-]+@sakarya\.edu\.tr$/;
+ <script>
+  function validateForm() {
+    var email = document.getElementById("email").value.trim();
+    var password = document.getElementById("password").value.trim();
+    var emailPattern = /^([a-zA-Z]{1}\d{9})@sakarya\.edu\.tr$/;
+    var passwordPattern = /^[a-zA-Z]{1}\d{9}$/;
 
-      if (email === "" || password === "") {
-        alert("Kullanıcı adı ve şifre boş bırakılamaz!");
-        return false;
-      }
-
-      if (!emailPattern.test(email)) {
-        alert("Lütfen geçerli bir Sakarya Üniversitesi e-posta adresi giriniz!");
-        return false;
-      }
-
-      return true;
+    if (email === "" || password === "") {
+      alert("Kullanıcı adı ve şifre boş bırakılamaz!");
+      return false;
     }
-  </script>
+
+    var emailMatch = email.match(emailPattern);
+    if (!emailMatch) {
+      alert("Please enter valid username");
+      return false;
+    }
+
+    if (!passwordPattern.test(password)) {
+      alert("Password invalid");
+      return false;
+    }
+
+    
+    var usernamePart = emailMatch[1];
+    if (password !== usernamePart) {
+      alert("Username and password ain't matching!");
+      return false;
+    }
+
+    return true;
+  }
+</script>
+
 
 </body>
 </html>
