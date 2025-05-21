@@ -34,21 +34,27 @@
     </nav>
   </div>
 </div>
-     <div id="app" class="form-container">
+    
+    
+ <div id="app" class="form-container">
     <h1>Contact form</h1>
 
     <form @submit.prevent="gonder">
       <label>Name:</label>
       <input type="text" v-model="form.ad">
+      <div class="error" v-if="errors.ad">{{ errors.ad }}</div>
 
       <label>Surname:</label>
       <input type="text" v-model="form.soyad">
+      <div class="error" v-if="errors.soyad">{{ errors.soyad }}</div>
 
       <label>E-mail:</label>
       <input type="text" v-model="form.email">
+      <div class="error" v-if="errors.email">{{ errors.email }}</div>
 
       <label>Phone:</label>
       <input type="text" v-model="form.telefon">
+      <div class="error" v-if="errors.telefon">{{ errors.telefon }}</div>
 
       <label>Topic:</label>
       <select v-model="form.topic">
@@ -57,24 +63,26 @@
         <option>Support</option>
         <option>Other</option>
       </select>
+      <div class="error" v-if="errors.topic">{{ errors.topic }}</div>
 
       <label>Gender:</label>
       <div class="radio-group">
         <label><input type="radio" value="Male" v-model="form.gender"> Male</label>
         <label><input type="radio" value="Female" v-model="form.gender"> Female</label>
       </div>
+      <div class="error" v-if="errors.gender">{{ errors.gender }}</div>
 
       <div class="checkbox-group">
         <label><input type="checkbox" v-model="form.kvkk">I accept the terms of the Personal Data Protection Law.</label>
       </div>
+      <div class="error" v-if="errors.kvkk">{{ errors.kvkk }}</div>
 
       <label>Your message:</label>
       <textarea rows="5" v-model="form.mesaj"></textarea>
+      <div class="error" v-if="errors.mesaj">{{ errors.mesaj }}</div>
 
       <button type="submit">Submit</button>
     </form>
-
-    <div class="error" v-for="error in errors" :key="error">{{ error }}</div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -92,48 +100,81 @@
           kvkk: false,
           mesaj: ''
         },
-        errors: []
+        errors: {
+          ad: '',
+          soyad: '',
+          email: '',
+          telefon: '',
+          topic: '',
+          gender: '',
+          kvkk: '',
+          mesaj: ''
+        }
       },
       methods: {
         gonder() {
-          this.errors = [];
+          // Reset errors
+          this.errors = {
+            ad: '',
+            soyad: '',
+            email: '',
+            telefon: '',
+            topic: '',
+            gender: '',
+            kvkk: '',
+            mesaj: ''
+          };
 
-        
-          const jsErrors = this.jsKontrol();
-          // Vue'ye özgü doğrulamalar
-          const vueErrors = this.vueKontrol();
-
-          // Tüm hataları birleştir
-          this.errors = [...jsErrors, ...vueErrors];
-
-          if (this.errors.length === 0) {
-            alert("Form sent succesfully!");
-            
-          }
-        },
-        jsKontrol() {
-          const errors = [];
           const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           const phonePattern = /^[0-9]+$/;
+          let isValid = true;
 
-          if (this.form.ad === '') errors.push("Name cannot be empty.");
-          if (this.form.soyad === '') errors.push("Surname canot be empty.");
-          if (!emailPattern.test(this.form.email)) errors.push("Invalid e-mail format.");
-          if (!phonePattern.test(this.form.telefon)) errors.push("Phone number can only consist digits.");
-          if (this.form.topic === '') errors.push("Topic must be chosen.");
-          if (this.form.gender === '') errors.push("Gender must be chosen.");
-          if (!this.form.kvkk) errors.push("PDPL must be accepted.");
-          if (this.form.mesaj === '') errors.push("Message area cannot be empty.");
+          if (this.form.ad === '') {
+            this.errors.ad = "Name cannot be empty.";
+            isValid = false;
+          }
 
-          return errors;
-        },
-        vueKontrol() {
-          const errors = [];
-          if (!this.form.email.includes("@"))
-            errors.push("E-mail must contain '@'.");
-       
+          if (this.form.soyad === '') {
+            this.errors.soyad = "Surname cannot be empty.";
+            isValid = false;
+          }
 
-          return errors;
+          if (!emailPattern.test(this.form.email)) {
+            this.errors.email = "Invalid e-mail format.";
+            isValid = false;
+          } else if (!this.form.email.includes("@")) {
+            this.errors.email = "E-mail must contain '@'.";
+            isValid = false;
+          }
+
+          if (!phonePattern.test(this.form.telefon)) {
+            this.errors.telefon = "Phone number can only consist of digits.";
+            isValid = false;
+          }
+
+          if (this.form.topic === '') {
+            this.errors.topic = "Topic must be chosen.";
+            isValid = false;
+          }
+
+          if (this.form.gender === '') {
+            this.errors.gender = "Gender must be chosen.";
+            isValid = false;
+          }
+
+          if (!this.form.kvkk) {
+            this.errors.kvkk = "PDPL must be accepted.";
+            isValid = false;
+          }
+
+          if (this.form.mesaj === '') {
+            this.errors.mesaj = "Message area cannot be empty.";
+            isValid = false;
+          }
+
+          if (isValid) {
+            alert("Form sent successfully!");
+          }
         }
       }
     });
