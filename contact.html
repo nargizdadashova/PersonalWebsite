@@ -34,14 +34,17 @@
     </nav>
   </div>
 </div>
+
     
     
  <div id="app" class="form-container">
+
     <h1>Contact form</h1>
 
     <form @submit.prevent="gonder">
       <label>Name:</label>
       <input type="text" v-model="form.ad">
+
       <div class="error" v-if="errors.ad">{{ errors.ad }}</div>
 
       <label>Surname:</label>
@@ -56,6 +59,7 @@
       <input type="text" v-model="form.telefon">
       <div class="error" v-if="errors.telefon">{{ errors.telefon }}</div>
 
+
       <label>Topic:</label>
       <select v-model="form.topic">
         <option disabled value="">Choose:</option>
@@ -63,6 +67,7 @@
         <option>Support</option>
         <option>Other</option>
       </select>
+
       <div class="error" v-if="errors.topic">{{ errors.topic }}</div>
 
       <label>Gender:</label>
@@ -70,11 +75,14 @@
         <label><input type="radio" value="Male" v-model="form.gender"> Male</label>
         <label><input type="radio" value="Female" v-model="form.gender"> Female</label>
       </div>
+
       <div class="error" v-if="errors.gender">{{ errors.gender }}</div>
+
 
       <div class="checkbox-group">
         <label><input type="checkbox" v-model="form.kvkk">I accept the terms of the Personal Data Protection Law.</label>
       </div>
+
       <div class="error" v-if="errors.kvkk">{{ errors.kvkk }}</div>
 
       <label>Your message:</label>
@@ -83,7 +91,7 @@
 
       <button type="submit">Submit</button>
     </form>
-  </div>
+
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script>
@@ -100,6 +108,7 @@
           kvkk: false,
           mesaj: ''
         },
+
         errors: {
           ad: '',
           soyad: '',
@@ -176,7 +185,7 @@
             alert("Form sent successfully!");
           }
         }
-      }
+      }  
     });
   </script>
 </body>
